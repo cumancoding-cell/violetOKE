@@ -6,7 +6,7 @@ body {
 }
 
 #game {
-    width: 400px;
+    width: 420px;
     margin: auto;
     border: 2px solid lime;
     padding: 20px;
@@ -14,10 +14,10 @@ body {
 
 #camera {
     border: 1px solid lime;
-    height: 100px;
+    height: 120px;
     margin: 10px 0;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -25,9 +25,10 @@ button {
     background: black;
     color: lime;
     border: 1px solid lime;
-    padding: 5px;
-    margin: 3px;
+    padding: 6px 10px;
+    margin: 4px;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 button:hover {
