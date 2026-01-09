@@ -1,15 +1,23 @@
+* {
+    box-sizing: border-box;
+    pointer-events: auto;
+}
+
 body {
     background-color: black;
     color: lime;
     font-family: monospace;
     text-align: center;
+    margin: 0;
 }
 
 #game {
     width: 420px;
-    margin: auto;
+    margin: 40px auto;
     border: 2px solid lime;
     padding: 20px;
+    position: relative;
+    z-index: 10;
 }
 
 #camera {
@@ -28,7 +36,6 @@ button {
     padding: 6px 10px;
     margin: 4px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 button:hover {
