@@ -1,51 +1,65 @@
 let power = 100;
 let doorClosed = false;
-let animatronicPosition = "Stage";
+let night = 1;
+
+const positions = ["Stage", "Hall", "Office"];
+let animatronicIndex = 0;
+let currentCamera = "Stage";
 
 const powerText = document.getElementById("power");
 const cameraText = document.getElementById("cameraText");
 const doorStatus = document.getElementById("doorStatus");
+const animText = document.getElementById("animatronicText");
+const nightText = document.getElementById("night");
 
 // Ganti kamera
 function changeCamera(room) {
+    currentCamera = room;
     cameraText.textContent = "Camera: " + room;
-    power -= 1;
-    updatePower();
 }
 
-// Buka / Tutup pintu
+// Toggle pintu
 function toggleDoor() {
     doorClosed = !doorClosed;
     doorStatus.textContent = doorClosed ? "Door: CLOSED" : "Door: OPEN";
-    power -= 2;
+    power -= 1;
     updatePower();
 }
 
 // Update power
 function updatePower() {
-    if (power <= 0) {
-        alert("Power Habis! Game Over!");
-        location.reload();
-    }
+    power = Math.max(0, power);
     powerText.textContent = power;
-}
 
-// Gerakan animatronic
-function moveAnimatronic() {
-    const positions = ["Stage", "Hall", "Office"];
-    animatronicPosition = positions[Math.floor(Math.random() * positions.length)];
-
-    if (animatronicPosition === "Office" && !doorClosed) {
-        alert("JUMPSCARE! Freddy got you!");
+    if (power === 0) {
+        alert("Power habis! Game Over!");
         location.reload();
     }
 }
 
-// Loop animatronic setiap 5 detik
-setInterval(moveAnimatronic, 5000);
+// Gerakan animatronic (bertahap)
+function moveAnimatronic() {
+    if (currentCamera === positions[animatronicIndex]) return;
 
-// Power berkurang setiap detik
+    animatronicIndex++;
+
+    if (animatronicIndex >= positions.length) {
+        if (!doorClosed) {
+            alert("JUMPSCARE! Freddy got you!");
+            location.reload();
+        } else {
+            animatronicIndex = 1;
+        }
+    }
+
+    animText.textContent = "Freddy: " + positions[animatronicIndex];
+}
+
+// Animatronic bergerak tiap 6 detik
+setInterval(moveAnimatronic, 6000);
+
+// Power drain tiap 2 detik
 setInterval(() => {
     power -= doorClosed ? 2 : 1;
     updatePower();
-}, 1000);
+}, 2000);
