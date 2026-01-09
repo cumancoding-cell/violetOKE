@@ -40,7 +40,7 @@ function updatePower() {
 // Gerakan animatronic (bertahap)
 function moveAnimatronic() {
     if (currentCamera === positions[animatronicIndex]) return;
-
+animatronicPosition = positions[Math.random()
     animatronicIndex++;
 
     if (animatronicIndex >= positions.length) {
