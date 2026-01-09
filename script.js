@@ -11,6 +11,8 @@ const powerText = document.getElementById("power");
 const cameraText = document.getElementById("cameraText");
 const doorStatus = document.getElementById("doorStatus");
 const animText = document.getElementById("animatronicText");
+changeCamera("Hall")
+
 
 // Ganti kamera
 window.changeCamera = function(room) {
