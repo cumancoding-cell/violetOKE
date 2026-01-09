@@ -1,0 +1,36 @@
+body {
+    background-color: black;
+    color: lime;
+    font-family: monospace;
+    text-align: center;
+}
+
+#game {
+    width: 400px;
+    margin: auto;
+    border: 2px solid lime;
+    padding: 20px;
+}
+
+#camera {
+    border: 1px solid lime;
+    height: 100px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background: black;
+    color: lime;
+    border: 1px solid lime;
+    padding: 5px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: lime;
+    color: black;
+}
